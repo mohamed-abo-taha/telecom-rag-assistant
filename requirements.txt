@@ -3,4 +3,3 @@ uvicorn
 sentence-transformers
 chromadb
 ollama
-matplotlib

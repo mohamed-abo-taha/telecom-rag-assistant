@@ -1,9 +1,6 @@
-"""Evaluate the RAG pipeline: retrieval hit-rate + LLM-as-judge faithfulness. Saves assets/eval.png."""
+"""Evaluate the RAG pipeline: retrieval hit-rate + LLM-as-judge faithfulness."""
 import os
 import sys
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 import ollama
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -47,20 +44,6 @@ def main():
     n = len(EVALSET)
     metrics = {'retrieval_hit_rate': round(hit / n, 2), 'faithfulness': round(faith / n, 2), 'n': n}
     print(metrics)
-
-    fig, ax = plt.subplots(figsize=(5, 3.4))
-    vals = [metrics['retrieval_hit_rate'], metrics['faithfulness']]
-    bars = ax.bar(['retrieval\nhit-rate', 'faithfulness'], vals, color=['#1976d2', '#7b1fa2'])
-    ax.set_ylim(0, 1.08)
-    ax.set_ylabel('score')
-    ax.set_title(f'Telecom RAG eval (n={n}, judge {LLM_MODEL})')
-    for b, v in zip(bars, vals):
-        ax.text(b.get_x() + b.get_width() / 2, v + 0.02, f'{v:.2f}', ha='center', weight='bold')
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    os.makedirs(os.path.join(root, 'assets'), exist_ok=True)
-    plt.tight_layout()
-    plt.savefig(os.path.join(root, 'assets', 'eval.png'), dpi=130)
-    print('wrote assets/eval.png')
 
 
 if __name__ == '__main__':
