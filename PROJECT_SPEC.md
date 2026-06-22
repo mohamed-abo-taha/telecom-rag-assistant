@@ -17,11 +17,6 @@ locally (Ollama + a local embedding model), no API keys.
 A held-out eval set measures retrieval hit-rate (does the right source get retrieved) and
 LLM-as-judge faithfulness (is the answer supported by the context). Reported with a chart.
 
-## Honest framing
-- Answers are only as good as the KB and the retrieval; the model is instructed to refuse out-of-KB
-  questions, but it can still err.
-- The knowledge base is sample telecom content, not a real operator's data.
-
 ## Maps to the JD
 RAG, vector databases, prompt engineering, a scalable FastAPI service, containerization, and an
 evaluation/testing harness — the core of an enterprise GenAI assistant.

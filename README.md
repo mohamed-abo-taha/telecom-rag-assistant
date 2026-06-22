@@ -29,7 +29,3 @@ A held-out eval set scores retrieval hit-rate and LLM-as-judge faithfulness:
     python src/eval.py
 
 ![evaluation](assets/eval.png)
-
-## Honest notes
-Answers are only as good as the knowledge base and retrieval; the model is told to refuse when the
-answer is not in context. The knowledge base is sample telecom content, not a real operator's data.
